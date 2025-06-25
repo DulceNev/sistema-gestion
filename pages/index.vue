@@ -1,59 +1,22 @@
+<script setup lang="ts">
+import WindowsIcon from "~/components/windows-icon.vue";
+</script>
+
 <template>
   <div class="background-image p-5">
-    <div class="grid grid-cols-9 h-screen items-start">
+    <div
+      class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-10 h-screen items-start"
+    >
       <div class="flex flex-col gap-6">
-        <div class="flex flex-col justify-center items-center">
-          <img
-            src="../public//img/icons/CARPETAAZUL.png"
-            class="icon-image"
-            alt=""
-          />
-          <span>CARPETA</span>
-        </div>
-        <div class="flex flex-col justify-center items-center">
-          <img
-            src="../public//img/icons/CARPETAMORADA.png"
-            class="icon-image"
-            alt=""
-          />
-          <span>CARPETA</span>
-        </div>
-        <div class="flex flex-col justify-center items-center">
-          <img
-            src="../public/img/icons/POMODORO.png"
-            class="icon-image"
-            alt=""
-          />
-          <span>POMODORO</span>
-        </div>
-
-        <div class="flex flex-col justify-center items-center">
-          <img src="../public//img/icons/TODO.png" class="icon-image" alt="" />
-          <span>TODO</span>
-        </div>
+        <WindowsIcon folderName="CARPETA" imagen="CARPETAAZUL.png" />
+        <WindowsIcon folderName="TODO LIST" imagen="TODO.png" />
+        <WindowsIcon folderName="CARPETA" imagen="CARPETAROSA.png" />
+        <WindowsIcon folderName="NOTAS" imagen="NOTES.png" />
       </div>
       <div class="flex flex-col gap-6">
-        <div class="flex flex-col justify-center items-center">
-          <img
-            src="../public//img/icons/CARPETAROSA.png"
-            class="icon-image"
-            alt=""
-          />
-          <span>CARPETA</span>
-        </div>
-        <div class="flex flex-col justify-center items-center">
-          <img
-            src="../public//img/icons/CALENDARIO.png"
-            class="icon-image"
-            alt=""
-          />
-          <span>CALENDARIO</span>
-        </div>
-
-        <div class="flex flex-col justify-center items-center">
-          <img src="../public//img/icons/NOTES.png" class="icon-image" alt="" />
-          <span>NOTAS</span>
-        </div>
+        <WindowsIcon folderName="POMODORO" imagen="POMODORO.png" />
+        <WindowsIcon folderName="CARPETA" imagen="CARPETAMORADA.png" />
+        <WindowsIcon folderName="CALENDARIO" imagen="CALENDARIO.png" />
       </div>
     </div>
   </div>
