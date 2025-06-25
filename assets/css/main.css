@@ -1,1 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import "tailwindcss";
+@plugin "daisyui";
+
+
+*{
+    font-family: "VT323";
+    font-weight: 500;
+    color: #48264B;
+}
+
+.background-image{
+    background-image: url("../../public/img/wallpaper.png");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.icon-image{
+    width: 100px;
+}
