@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import Modal from "~/components/modal.vue";
 import WindowsIcon from "~/components/windows-icon.vue";
 </script>
 
 <template>
   <div class="background-image p-5">
+    <Modal class="absolute" />
     <div
       class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-10 h-screen items-start"
     >
