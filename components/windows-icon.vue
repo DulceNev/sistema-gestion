@@ -5,15 +5,10 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-const emit = defineEmits<{
-  (e: "abrir"): void;
-}>();
 </script>
 
 <template>
   <div
-    @click="emit('abrir')"
     class="flex flex-col justify-center items-center h-25 w-25 cursor-pointer hover:bg-white/30 hover:rounded-md hover:transition-all"
   >
     <img
