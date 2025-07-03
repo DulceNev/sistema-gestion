@@ -40,9 +40,11 @@ import WindowsIcon from "~/components/windows-icon.vue";
           class="dropdown-content font-medium menu bg-base-100 text-primary rounded-box z-1 w-60 p-2 shadow-sm"
         >
           <li>
-            <a>
-              <Icon icon="pixelarticons:user" width="24" height="24" />Cerrar la
-              sesión</a
+            <NuxtLink to="/inicio-sesion">
+              <a class="flex gap-2">
+                <Icon icon="pixelarticons:user" width="24" height="24" />Cerrar
+                sesión</a
+              ></NuxtLink
             >
           </li>
 
@@ -65,6 +67,15 @@ import WindowsIcon from "~/components/windows-icon.vue";
       </div>
 
       <div class="flex gap-3 items-center">
+        <div class="tooltip" data-tip="Hola Dulce!">
+          <Icon
+            icon="pixelarticons:mood-happy"
+            width="24"
+            height="24"
+            style="color: #fff"
+          />
+        </div>
+
         <Icon
           icon="pixelarticons:cellular-signal-3"
           width="24"

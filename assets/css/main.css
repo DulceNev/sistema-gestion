@@ -12,7 +12,7 @@
     /* color of browser-provided UI */
 
     --color-base-100: #ffddef;
-    --color-base-200: oklch(95% 0.03 240);
+    --color-base-200: #ffddef;
     --color-base-300: oklch(92% 0.04 240);
     --color-base-content: oklch(20% 0.05 240);
     /* --color-primary: oklch(43.22% 0.11 328.3); */
@@ -22,8 +22,8 @@
     --color-secondary-content: oklch(98% 0.01 200);
     --color-accent: oklch(65% 0.25 160);
     --color-accent-content: oklch(98% 0.01 160);
-    --color-neutral: oklch(50% 0.05 240);
-    --color-neutral-content: oklch(98% 0.01 240);
+    --color-neutral: #ffddef;
+    --color-neutral-content: #48264B;
     --color-info: oklch(70% 0.2 220);
     --color-info-content: oklch(98% 0.01 220);
     --color-success: oklch(65% 0.25 140);
@@ -53,6 +53,10 @@
 *{
     font-family: "VT323";
     /* color: #48264B; */
+}
+
+.test{
+    color: rgba(255, 255, 255, 0);
 }
 
 .background-image{

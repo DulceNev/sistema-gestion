@@ -37,18 +37,6 @@ const props = defineProps<Props>();
       </div>
     </header>
     <div class="flex flex-col justify-between items-center p-2">
-      <!-- <textarea
-
-        placeholder="Se supone que debes escribir algo aquí..."
-        class="w-full h-full text-lg font-light"
-        name=""
-        id=""
-      ></textarea>
-      <button
-        class="border-3 rounded-lg py-1 px-4 my-2 bg-white cursor-pointer border-[#48264B] color-[#48264B]"
-      >
-        Crear nota
-      </button> -->
       <div class="flex gap-3 items-center">
         <input
           type="checkbox"
