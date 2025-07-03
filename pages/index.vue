@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { Icon } from "@iconify/vue";
 
 const username = ref("");
@@ -45,6 +44,7 @@ function handleFakeLogin() {
             class="bg-pink-200 flex items-center justify-center gap-1 text-md w-full rounded-full p-1 cursor-pointer hover:scale-110 transition-all"
           >
             <p>Entrar</p>
+
             <Icon
               icon="pixelarticons:arrow-right"
               width="24"

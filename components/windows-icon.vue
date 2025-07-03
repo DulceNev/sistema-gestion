@@ -9,7 +9,7 @@ const props = defineProps<Props>();
 
 <template>
   <div
-    class="flex flex-col justify-center items-center h-25 w-25 cursor-pointer hover:bg-white/30 hover:rounded-md hover:transition-all"
+    class="flex flex-col justify-center items-center size-25 cursor-pointer hover:bg-white/30 hover:rounded-md hover:transition-all"
   >
     <img
       :src="`/img/icons/${props.imagen}`"
