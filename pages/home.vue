@@ -3,6 +3,16 @@
 import { Icon } from "@iconify/vue";
 import Modal from "~/components/modal.vue";
 import WindowsIcon from "~/components/windows-icon.vue";
+
+const nombreUsuario = ref("");
+
+onMounted(() => {
+  const nombreGuardado = localStorage.getItem("nombreUsuario");
+  // ¿Hay algo en nombreGuardado?
+  if (nombreGuardado) {
+    nombreUsuario.value = nombreGuardado;
+  }
+});
 </script>
 
 <template>
@@ -67,7 +77,7 @@ import WindowsIcon from "~/components/windows-icon.vue";
       </div>
 
       <div class="flex gap-3 items-center">
-        <div class="tooltip" data-tip="Hola Dulce!">
+        <div class="tooltip" :data-tip="`Hola ${nombreUsuario}! :D`">
           <Icon
             icon="pixelarticons:mood-happy"
             width="24"

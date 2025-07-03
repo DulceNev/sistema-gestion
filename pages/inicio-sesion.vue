@@ -1,5 +1,17 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { Icon } from "@iconify/vue";
+
+const username = ref("");
+const router = useRouter();
+
+function handleFakeLogin() {
+  localStorage.setItem("nombreUsuario", username.value);
+  router.push("/home");
+  console.log({
+    username: username.value,
+  });
+}
 </script>
 
 <template>
@@ -9,8 +21,13 @@ import { Icon } from "@iconify/vue";
         class="flex flex-col justify-center h-full items-center gap-3 text-primary"
       >
         <img src="../public/img/user-image.png" alt="" />
-        <form class="flex flex-col gap-3 items-center" action="">
+        <form
+          @submit.prevent="handleFakeLogin"
+          class="flex flex-col gap-3 items-center"
+          action=""
+        >
           <input
+            v-model="username"
             class="bg-white/30 rounded-full py-1 px-4 w-56"
             type="text"
             placeholder="Nombre..."
