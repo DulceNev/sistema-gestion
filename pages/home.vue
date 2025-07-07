@@ -116,6 +116,6 @@ const windowsIconsChunks = computed(() => {
         <p class="text-xl">4:46 pm</p>
       </div>
     </footer>
-    <Modal color="#93c3ff" title="NOTAS" />
+    <Modal color="#93c3ff" title="TODO LIST" />
   </div>
 </template>

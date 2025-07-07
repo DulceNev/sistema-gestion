@@ -61,11 +61,19 @@ const { x, y, style } = useDraggable(el, {
         <input type="checkbox" class="checkbox checkbox-sm checkbox-primary" />
         <p class="">Esto es una tarea</p>
       </div>
-      <button
-        class="bg-base-200 py-1 w-[50%] text-white rounded-md hover:brightness-95 active:brightness-90 active:scale-98 transition-all cursor-pointer"
-      >
-        Agregar Tarea
-      </button>
+      <form action="" class="flex justify-center items-center gap-3 w-full">
+        <input
+          placeholder="Agregar tarea..."
+          class="py-1 w-full border-1 text-primary text-center rounded-md cursor-pointer"
+          required
+        />
+        <button
+          :style="{ backgroundColor: props.color }"
+          class="p-2 rounded-full cursor-pointer hover:brightness-95 active:brightness-90 active:scale-90 transition-all"
+        >
+          <Icon icon="material-symbols:add" width="24" style="color: #fff" />
+        </button>
+      </form>
     </div>
   </div>
 </template>
