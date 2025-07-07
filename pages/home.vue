@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+import Modal from "~/components/Modal.vue";
 // import { Heart, Icon, Volume2, Wifi } from "lucide-vue-next";
 
 const windowsIcons = [
@@ -9,10 +10,6 @@ const windowsIcons = [
   { folderName: "NOTAS", imagen: "NOTES.png" },
   { folderName: "POMODORO", imagen: "POMODORO.png" },
   { folderName: "CARPETA", imagen: "CARPETAMORADA.png" },
-  { folderName: "CALENDARIO", imagen: "CALENDARIO.png" },
-  { folderName: "CALENDARIO", imagen: "CALENDARIO.png" },
-  { folderName: "CALENDARIO", imagen: "CALENDARIO.png" },
-  { folderName: "CALENDARIO", imagen: "CALENDARIO.png" },
   { folderName: "CALENDARIO", imagen: "CALENDARIO.png" },
 ];
 const MAX_ITEMS_PER_ROW = 4;
@@ -39,7 +36,6 @@ const windowsIconsChunks = computed(() => {
 
 <template>
   <div class="background-image">
-    <!-- <Modal class="absolute" color="#93c3ff" title="NOTAS" /> -->
     <div class="h-screen p-5 relative flex gap-8">
       <div
         class="`grid gap-y-8 max-h-[100%] justify-start items-start`"
@@ -120,5 +116,6 @@ const windowsIconsChunks = computed(() => {
         <p class="text-xl">4:46 pm</p>
       </div>
     </footer>
+    <Modal color="#93c3ff" title="NOTAS" />
   </div>
 </template>

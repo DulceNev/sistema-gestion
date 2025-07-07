@@ -12,7 +12,7 @@
     /* color of browser-provided UI */
 
     --color-base-100: #ffddef;
-    --color-base-200: #ffddef;
+    --color-base-200: #93c3ff;
     --color-base-300: oklch(92% 0.04 240);
     --color-base-content: oklch(20% 0.05 240);
     /* --color-primary: oklch(43.22% 0.11 328.3); */

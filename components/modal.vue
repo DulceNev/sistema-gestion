@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { Minus } from "lucide-vue-next";
+import { useDraggable } from "@vueuse/core";
+import { useTemplateRef } from "vue";
 
 interface Props {
   title: string;
@@ -9,42 +10,62 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const el = useTemplateRef<HTMLElement>("el");
+
+const { x, y, style } = useDraggable(el, {
+  initialValue: { x: 81, y: 228 },
+});
 </script>
 
 <template>
   <div
-    class="w-[500px] bg-white/90 border-7 border-primary rounded-xl text-primary"
+    ref="el"
+    :style="style"
+    style="position: fixed"
+    class="w-[500px] text-primary"
   >
     <header
-      class="flex justify-between border-b-7 border-primary items-center px-2 rounded-t-md"
+      class="flex justify-between items-center px-2 rounded-t-md"
       :style="{ backgroundColor: props.color }"
     >
       <p class="text-xl text-white!">{{ props.title }}</p>
       <div class="flex gap-3">
-        <Minus class="cursor-pointer" color="#fff" />
+        <Icon
+          icon="ic:baseline-minus"
+          width="24"
+          height="24"
+          style="color: #fff"
+          class="cursor-pointer"
+        />
         <Icon
           icon="pixelarticons:scale"
           width="24"
           height="24"
           style="color: #fff"
+          class="cursor-pointer"
         />
         <Icon
           icon="pixelarticons:close"
           width="24"
           height="24"
           style="color: #fff"
+          class="cursor-pointer"
         />
       </div>
     </header>
-    <div class="flex flex-col justify-between items-center p-2">
+    <div
+      class="flex bg-white/80 rounded-b-md flex-col justify-between items-center p-2 gap-3"
+    >
       <div class="flex gap-3 items-center">
-        <input
-          type="checkbox"
-          defaultChecked
-          className="checkbox checkbox-primary checkbox-sm"
-        />
+        <input type="checkbox" class="checkbox checkbox-sm checkbox-primary" />
         <p class="">Esto es una tarea</p>
       </div>
+      <button
+        class="bg-base-200 py-1 w-[50%] text-white rounded-md hover:brightness-95 active:brightness-90 active:scale-98 transition-all cursor-pointer"
+      >
+        Agregar Tarea
+      </button>
     </div>
   </div>
 </template>
