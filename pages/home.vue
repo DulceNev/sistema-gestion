@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import Modal from "~/components/Modal.vue";
+
 // import { Heart, Icon, Volume2, Wifi } from "lucide-vue-next";
 
 const windowsIcons = [
@@ -14,15 +14,6 @@ const windowsIcons = [
 ];
 const MAX_ITEMS_PER_ROW = 4;
 const SIZE_WINDOWS_ICON = "125px";
-const nombreUsuario = ref("");
-
-onMounted(() => {
-  const nombreGuardado = localStorage.getItem("nombreUsuario");
-  // ¿Hay algo en nombreGuardado?
-  if (nombreGuardado) {
-    nombreUsuario.value = nombreGuardado;
-  }
-});
 
 const windowsIconsChunks = computed(() => {
   const chunks = [];
@@ -32,6 +23,21 @@ const windowsIconsChunks = computed(() => {
 
   return chunks;
 });
+const textInputValue = ref("");
+// Voy a tener un array de objetos tipo Task
+const todoList = useLocalStorage<Task[]>("todos", []);
+
+function addTask() {
+  todoList.value.push({
+    text: textInputValue.value,
+    isCompleted: false,
+  });
+  textInputValue.value = "";
+}
+
+function deleteTask(index: number) {
+  todoList.value.splice(index, 1);
+}
 </script>
 
 <template>
@@ -50,72 +56,114 @@ const windowsIconsChunks = computed(() => {
 
       <div class="flex flex-col gap-6"></div>
     </div>
-    <footer
-      class="fixed bottom-0 w-full bg-[#FFA7C8] px-5 py-2 flex justify-between items-center text-white"
-    >
-      <div class="dropdown dropdown-top cursor-pointer">
-        <Icon
-          tabindex="0"
-          role="button"
-          class="hover:scale-120 transition-all"
-          icon="majesticons:heart"
-          width="34"
-          style="color: #fff"
-        />
-        <ul
-          tabindex="0"
-          class="dropdown-content font-medium menu bg-base-100 text-primary rounded-box z-1 w-60 p-2 shadow-sm"
+    <Footer />
+    <Modal color="red" title="TODO LIST 2">
+      <div
+        class="flex bg-white/80 rounded-b-md flex-col items-center p-2 gap-3"
+      >
+        <li
+          class="flex gap-2 items-center justify-between w-full"
+          v-for="(task, index) in todoList"
+          :key="index"
         >
-          <li>
-            <NuxtLink to="/" class="flex gap-2">
-              <Icon icon="pixelarticons:user" width="24" height="24" />Cerrar
-              sesión</NuxtLink
-            >
-          </li>
+          <div class="flex gap-2">
+            <input
+              type="checkbox"
+              class="checkbox checkbox-sm checkbox-primary"
+              v-model="task.isCompleted"
+            />
 
-          <li>
-            <NuxtLink
-              ><Icon icon="pixelarticons:moon" width="24" height="24" />
-              Suspender</NuxtLink
-            >
-          </li>
-          <li>
-            <NuxtLink
-              ><Icon
-                icon="pixelarticons:power"
-                width="24"
-                height="24"
-              />Apagar</NuxtLink
-            >
-          </li>
-        </ul>
-      </div>
+            <!-- Si task.isCompleted es true, aplica la clase line-through. -->
+            <p :class="{ 'line-through': task.isCompleted }">
+              {{ task.text }}
+            </p>
+          </div>
 
-      <div class="flex gap-3 items-center">
-        <div class="tooltip" :data-tip="`Hola ${nombreUsuario}! :D`">
-          <Icon
-            icon="pixelarticons:mood-happy"
-            width="24"
-            height="24"
-            style="color: #fff"
+          <button @click="deleteTask(index)">
+            <Icon
+              icon="pixelarticons:close"
+              width="28"
+              style="color: #93c3ff"
+              class="cursor-pointer"
+            />
+          </button>
+        </li>
+        <form
+          @submit.prevent="addTask"
+          class="flex justify-center items-center gap-3 w-full"
+        >
+          <input
+            v-model="textInputValue"
+            placeholder="Agregar tarea..."
+            required
+            class="py-1 w-full border-1 text-primary text-center rounded-md cursor-pointer"
           />
-        </div>
+          <button
+            :style="{ backgroundColor: '#93c3ff' }"
+            class="p-2 rounded-full cursor-pointer hover:brightness-95 active:brightness-90 active:scale-90 transition-all"
+          >
+            <Icon icon="material-symbols:add" width="24" style="color: #fff" />
+          </button>
+        </form></div
+    ></Modal>
+    <Modal color="yellow" title="TODO LIST`3">
+      <div
+        class="flex bg-white/80 rounded-b-md flex-col items-center p-2 gap-3"
+      >
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
+        aliquam ipsa consequuntur hic quaerat nobis dolore autem quisquam?
+        Expedita soluta quia laborum odit et, tenetur ad sed? Sequi, repellat
+        voluptates.
+      </div></Modal
+    >
+    <Modal color="#93c3ff" title="TODO LIST">
+      <div
+        class="flex bg-white/80 rounded-b-md flex-col items-center p-2 gap-3"
+      >
+        <li
+          class="flex gap-2 items-center justify-between w-full"
+          v-for="(task, index) in todoList"
+          :key="index"
+        >
+          <div class="flex gap-2">
+            <input
+              type="checkbox"
+              class="checkbox checkbox-sm checkbox-primary"
+              v-model="task.isCompleted"
+            />
 
-        <Icon
-          icon="pixelarticons:cellular-signal-3"
-          width="24"
-          height="24"
-          style="color: #fff"
-        />
-        <Icon
-          icon="pixelarticons:volume-3"
-          width="24"
-          height="24"
-          style="color: #fff"
-        />
-        <p class="text-xl">4:46 pm</p>
-      </div>
-    </footer>
-    <Modal color="#93c3ff" title="TODO LIST" />
+            <!-- Si task.isCompleted es true, aplica la clase line-through. -->
+            <p :class="{ 'line-through': task.isCompleted }">
+              {{ task.text }}
+            </p>
+          </div>
+
+          <button @click="deleteTask(index)">
+            <Icon
+              icon="pixelarticons:close"
+              width="28"
+              style="color: #93c3ff"
+              class="cursor-pointer"
+            />
+          </button>
+        </li>
+        <form
+          @submit.prevent="addTask"
+          class="flex justify-center items-center gap-3 w-full"
+        >
+          <input
+            v-model="textInputValue"
+            placeholder="Agregar tarea..."
+            required
+            class="py-1 w-full border-1 text-primary text-center rounded-md cursor-pointer"
+          />
+          <button
+            :style="{ backgroundColor: '#93c3ff' }"
+            class="p-2 rounded-full cursor-pointer hover:brightness-95 active:brightness-90 active:scale-90 transition-all"
+          >
+            <Icon icon="material-symbols:add" width="24" style="color: #fff" />
+          </button>
+        </form></div
+    ></Modal>
   </div>
 </template>
